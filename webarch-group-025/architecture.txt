@@ -1,0 +1,39 @@
+server A
+	OrderService
+		addOrder
+			-called when POST request comes in
+			-calls db.saveOrder 
+			-calls addTask
+		getOrderById
+			-calls findID and returns result
+		getOrders
+			-calls findAll and returns result
+	db
+		saveOrder
+			-saves order object to collection
+		findAll
+			-returns collection as array of order objects
+		findID
+			-returns object matching parameter ID
+		ack
+			-finds object matching parameter ID and changes status to "ready"
+		drop
+			-drops collection. called in server A startup. handy in testing phase
+	rabbit-utils/receiveTask
+		getTask
+			-receives task from server B and calls db.ack
+	rabbit-utils/sendTask
+		addTask
+			-sends order object to server B
+server B
+	index
+		receive
+			-is called periodically
+			-calls getTask, params: default vm IP, queue from server A
+	rabbit-utils/receiveTask
+		getTask
+			-receives order object from server A
+			-"processes" order and calls addTask, params: default IP, queue to server A
+	rabbit-utils/sendTask
+		addTask
+			-sends order object to server A

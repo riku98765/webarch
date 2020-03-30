@@ -1,0 +1,22 @@
+Inside webarch-group-025 folder run docker-compose up
+ignore error messages until message broker is running
+when rapid-runner-rabbit is running send orders
+browsers web developer tools were used for testing
+-POST
+-http://192.168.99.100:12345/v1/order
+-Accept:application/json, Content-type:application/json
+-{"sandwichID":XXX, "id":XXX, "status":"received"}
+
+order should be received
+
+-GET
+-http://192.168.99.100:12345/v1/order
+
+or
+
+-GET
+-http://192.168.99.100:12345/v1/order/{orderID}
+
+
+when server A get order back, status should change to "ready"
+change id when testing with multiple orders 
