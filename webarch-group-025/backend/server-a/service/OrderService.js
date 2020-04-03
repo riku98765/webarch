@@ -23,7 +23,7 @@ exports.addOrder = function(order) {
   var obj_str = JSON.stringify(myobj);
   
   mongo.saveOrder(obj_str);
-  rabbit.addTask('192.168.99.100', 'queueA', myobj);
+  rabbit.addTask('rapid-runner-rabbit', 'queueA', myobj);
   return new Promise(function(resolve, reject) {
     
     

@@ -4,7 +4,7 @@ var Rabbit = require('./rabbit-utils/receiveTask');
 
 
 function receive(){
-Rabbit.getTask('192.168.99.100', 'queueB');
+Rabbit.getTask('rapid-runner-rabbit', 'queueB');
 }
   
 

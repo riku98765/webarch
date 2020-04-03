@@ -2,7 +2,7 @@
 //{useNewUrlParser: true, useUnifiedTopology: true}
 
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://192.168.99.100:27017/mydb";
+var url = "mongodb://mongodb_container:27017/mydb";
 
 exports.startDB = function() {
 MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true}, function(err, db) {

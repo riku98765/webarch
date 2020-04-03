@@ -36,10 +36,10 @@ services:
     ports:
       - "12345:8080"
       - "80:8080"
-    networks:
-      - backend
+    # networks
+     # - backend
 
-  # You can base this service on the rabbitmq:3-management Docker Hub image.
+  # You can base this service on the rabbitmq:3-management Docker Hub image
   # You need to expose the RabbitMQ port 5672 to other containers
   # in this  docker-compose.yml, and for the managent from a Web
   # server you needs to make the map the RabbitMQ container port
@@ -53,9 +53,9 @@ services:
       - "30001:15672"
       - "5672:5672"
     expose: 
-      - 5672
-    networks:
-     - backend
+      - "5672"
+    # networks
+     #- backend
   # much of the server-b service entry can be copied from server-a
   # service above. server-b directory Dockerfile has more
   # information.
@@ -77,8 +77,8 @@ services:
         - ./backend/server-b:/usr/src/app
        ports:
         - "30002:8080"
-       networks:
-        - backend
+       # network
+       # - backend
   # Your group might want to use a database to store some data
   # You can use any database you wish, PostgreSQL, MySQL and
   # MongoDB have rather good Docker documentation and examples.
@@ -101,8 +101,8 @@ volumes:
 # Here we create a named network, that all the backend components
 # must be added to for them to be able to communicate through
 # exposed ports.
-networks:
-  backend: {}
+#networks:
+#  backend: {}
 
 # If you use databases for storing information, you can define
 # their volumes here.

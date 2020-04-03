@@ -8,7 +8,7 @@ var amqp = require('amqplib');
 var rabbit = require('./sendTask');
 
 function send(body){
-rabbit.addTask("192.168.99.100", "queueB", JSON.parse(body));
+rabbit.addTask("rapid-runner-rabbit", "queueB", JSON.parse(body));
 }
 
 module.exports.getTask = function(rabbitHost, queueName){
